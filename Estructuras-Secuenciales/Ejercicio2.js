@@ -11,6 +11,6 @@ total_estudiantes = mujeres + hombres;
 porcentaje_h = hombres / total_estudiantes * 100;
 porcentaje_m = mujeres / total_estudiantes * 100;
 
-// No sé como quitar decimales para que no quede el porcentaje tan largo
+// No sé como quitar decimales para que no quede el porcentaje taan largo
 console.log(`El porcentaje de hombres es de: ${porcentaje_h}%`);
 console.log(`El porcentaje de mujeres es de: ${porcentaje_m}%`);
