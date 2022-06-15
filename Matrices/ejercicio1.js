@@ -1,4 +1,4 @@
-/* Genere unos números, almacénelos en una matriz, para obtener:
+/* Almacene números en una matriz, para obtener:
 - El mayor los pares y menor de los impares. */
 let pares =[];
 let cont = 0;
