@@ -28,12 +28,6 @@ function multiplicacion(numeros){
         divi = numeros[i] / numeros[i+1]
         return divi;
     }
-    /*
-    divi = numeros[0];
-    numeros.forEach((numero)=>{
-        divi /= numero;
-        return divi;
-    });*/
 } 
 
 let numeros = [];
