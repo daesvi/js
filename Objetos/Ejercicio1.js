@@ -1,7 +1,7 @@
 /* Crear una función que imprima por consola el 
 nombre, edad y estatura de un objeto persona. */
 
-function datos (){
+function datos (persona){
     console.log(Object.values(persona));
 }
 
