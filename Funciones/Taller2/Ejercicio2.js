@@ -23,11 +23,13 @@ function multiplicacion(numeros){
         return multi;
     });
 }
- function division(numeros){
-    for(let i = 0; i < numeros.length; i++){
-        divi = numeros[i] / numeros[i+1]
-        return divi;
+
+function division(numeros){
+    let division_resultado = numeros[0];
+    for(let i = 1; i < numeros.length; i++){
+        division_resultado /= numeros[i];
     }
+    return division_resultado;
 } 
 
 let numeros = [];
@@ -66,7 +68,7 @@ switch (op){
     break;
     case 4:
         division(numeros);
-        document.write(`El resultado de la división es: ${divi}`);
+        document.write(`El resultado de la división es: ${division_resultado}`);
     break;
     default:
         alert(`La opción ingresada no es válida`);
