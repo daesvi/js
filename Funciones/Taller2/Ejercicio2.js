@@ -20,8 +20,9 @@ function multiplicacion(numeros){
     numeros.forEach((numero)=>{
         multi = multi || 1;
         multi *= numero;
-        return multi;
+
     });
+    return multi;
 }
 
 function division(numeros){
