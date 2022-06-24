@@ -25,13 +25,13 @@ function multiplicacion(numeros){
 }
 
 function division(numeros){
-    let division_resultado = numeros[0];
+    division_resultado = numeros[0];
     for(let i = 1; i < numeros.length; i++){
         division_resultado /= numeros[i];
     }
     return division_resultado;
 } 
-
+let division_resultado;
 let numeros = [];
 let numero, op;
 let sumaa = 0;
