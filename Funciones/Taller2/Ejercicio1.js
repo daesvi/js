@@ -1,12 +1,13 @@
 /* Realizar una función como parámetro de otra función para saludar a un usuario. */
 
-function saludo (nombre){
-    console.log(`¡Hola!. Bienvenido, ${nombre}`);
+function saludo (salu){
+    document.write(`¡Hola!. Bienvenido, ${nombre}`);
 }
 
-function salu (nombre) {
-    saludo(nombre);
+function salu () {
+    nombre = prompt('Ingrese su nombre');
+    saludo(salu);
 }
 
-let nombre = "Daniel";
-salu(nombre);
+let nombre;
+salu();
