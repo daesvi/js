@@ -18,8 +18,8 @@ const image_continent = document.getElementById('image_continent')
 const nombre_lugar = document.getElementById('nombre_lugar')
 const continente_lugar = document.getElementById('continente_lugar')
 const volver = document.getElementById('volver')
-const continentess = document.getElementById('continentess')
-const date_citation = [];
+const continentess = document.getElementById('continentess');
+
 const cards = [0,1,2,3,4,5]
 let continent_filter;
 let cont_citation =0;
@@ -253,9 +253,12 @@ function alerts_citation (){
                 allowEnterKey: true,
             })
         }else{
-            const date_citation = JSON.parse(localStorage.getItem('date_citation'));
-            console.log(date_citation)
+            let date_citation = JSON.parse(localStorage.getItem('date_citation'));
+            if (date_citation==null){
+                date_citation = [];
+            }
             date_citation.push({citation_going: fecha_partida, citation_return: fecha_retorno, citation_continent: citation_name_continent, citation_name: citation_name_place, citation_img: citation_img_place })
+            console.log(date_citation)
             //Guardar en el local
             localStorage.setItem('date_citation',JSON.stringify(date_citation))
             Swal.fire({
