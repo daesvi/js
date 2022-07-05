@@ -253,14 +253,18 @@ function alerts_citation (){
                 allowEnterKey: true,
             })
         }else{
+            // Hace el pull
             let date_citation = JSON.parse(localStorage.getItem('date_citation'));
+            // Verifica si es null, para arreglar el error cuando está vacío el localstorage
             if (date_citation==null){
                 date_citation = [];
             }
+            // Hace el push al array
             date_citation.push({citation_going: fecha_partida, citation_return: fecha_retorno, citation_continent: citation_name_continent, citation_name: citation_name_place, citation_img: citation_img_place })
             console.log(date_citation)
-            //Guardar en el local
+            //Guarda el array en el local
             localStorage.setItem('date_citation',JSON.stringify(date_citation))
+            // Alerta
             Swal.fire({
                 icon: 'success',
                 text: 'Tu cita ha sido agendada, pronto uno de nuestros asesores se comunicará contigo',
