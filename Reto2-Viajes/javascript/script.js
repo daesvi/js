@@ -19,26 +19,17 @@ const nombre_lugar = document.getElementById('nombre_lugar')
 const continente_lugar = document.getElementById('continente_lugar')
 const volver = document.getElementById('volver')
 const continentess = document.getElementById('continentess')
-
+const date_citation = [];
 const cards = [0,1,2,3,4,5]
 let continent_filter;
-
+let cont_citation =0;
+let citation_name_continent,citation_name_place,citation_img_place;
+alerts_citation()
 function continentf (lugares,cont_id_continent){
     continent_filter = lugares.filter(x => x.id_continente == cont_id_continent);
 }
 
-function more_date (continent_filter,e){
-    for(let i = 0; i < continent_filter.length; i++){
-        if(e.target.id == continent_filter[i].id_lugar){
-            more_name.innerHTML = continent_filter[i].nombre;
-            more_description.innerHTML = continent_filter[i].description;
-            more_image.setAttribute('src',continent_filter[i].img);
-            image_continent.setAttribute('src',continent_filter[i].img_continent);
-            nombre_lugar.setAttribute('placeholder',continent_filter[i].nombre);
-            continente_lugar.setAttribute('placeholder',continent_filter[i].nombre_continente);
-        }
-    }
-}
+
 
 // Al iniciar
 document.addEventListener('DOMContentLoaded',()=>{
@@ -48,6 +39,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     lugares_oceania.hidden = true;
     lugares_america.hidden = true;
     more.hidden = true;
+    
 })
 
 let cont_africa = 0;
@@ -73,7 +65,7 @@ continente_africa.addEventListener('click',()=>{
             lugares_africa.hidden = true;
             more.hidden = false;
             continentess.hidden = true;
-            more_date(continent_filter,e)
+            more_date(continent_filter,e,cont_citation)
             volver.addEventListener('click',()=>{
                 more.hidden = true;
                 continentess.hidden = false;
@@ -82,9 +74,10 @@ continente_africa.addEventListener('click',()=>{
                 lugares_europa.hidden = true;
                 lugares_america.hidden = true;
                 lugares_oceania.hidden = true;
-            })       
+            })  
         }
-    })
+        
+    }) 
 })
 
 let cont_asia = 0;
@@ -111,7 +104,7 @@ continente_asia.addEventListener('click',()=>{
             lugares_asia.hidden = true;
             more.hidden = false;
             continentess.hidden = true;
-            more_date(continent_filter,e)
+            more_date(continent_filter,e,cont_citation)
             volver.addEventListener('click',()=>{
                 more.hidden = true;
                 continentess.hidden = false;
@@ -149,7 +142,7 @@ continente_europa.addEventListener('click',()=>{
             lugares_europa.hidden = true;
             more.hidden = false;
             continentess.hidden = true;
-            more_date(continent_filter,e)
+            more_date(continent_filter,e,cont_citation)
             volver.addEventListener('click',()=>{
                 more.hidden = true;
                 continentess.hidden = false;
@@ -187,7 +180,7 @@ continente_oceania.addEventListener('click',()=>{
             lugares_oceania.hidden = true;
             more.hidden = false;
             continentess.hidden = true;
-            more_date(continent_filter,e)
+            more_date(continent_filter,e,cont_citation)
             volver.addEventListener('click',()=>{
                 more.hidden = true;
                 continentess.hidden = false;
@@ -225,7 +218,7 @@ continente_america.addEventListener('click',()=>{
             lugares_america.hidden = true;
             more.hidden = false;
             continentess.hidden = true;
-            more_date(continent_filter,e)
+            more_date(continent_filter,e,cont_citation)
             volver.addEventListener('click',()=>{
                 more.hidden = true;
                 continentess.hidden = false;
@@ -238,3 +231,54 @@ continente_america.addEventListener('click',()=>{
         }
     })
 })
+function alerts_citation (){
+    const citation = document.getElementById('citation')
+    citation.addEventListener('submit', (e)=>{
+        e.preventDefault(); // Bloquea la actualización del formulario que esta por defecto
+        let fecha_partida = document.getElementById("fecha_partida")
+        let fecha_retorno = document.getElementById("fecha_retorno")
+        fecha_partida = fecha_partida.value; 
+        fecha_retorno = fecha_retorno.value; 
+        citation_name_continent = continente_lugar.getAttribute('placeholder');
+        citation_name_place = nombre_lugar.getAttribute('placeholder');
+        citation_img_place = more_image.getAttribute('src');
+        if(fecha_partida === '' || fecha_retorno === ''){
+            Swal.fire({
+                icon: 'error',
+                title: '¡Ups!',
+                text: 'Asegurate que todos los campos estén correctamente diligenciados',
+                allowOutsideClick: true,
+                backdrop: true,
+                allowEscapeKey: true,
+                allowEnterKey: true,
+            })
+        }else{
+            const date_citation = JSON.parse(localStorage.getItem('date_citation'));
+            console.log(date_citation)
+            date_citation.push({citation_going: fecha_partida, citation_return: fecha_retorno, citation_continent: citation_name_continent, citation_name: citation_name_place, citation_img: citation_img_place })
+            //Guardar en el local
+            localStorage.setItem('date_citation',JSON.stringify(date_citation))
+            Swal.fire({
+                icon: 'success',
+                text: 'Tu cita ha sido agendada, pronto uno de nuestros asesores se comunicará contigo',
+                allowOutsideClick: true,
+                backdrop: true,
+                allowEscapeKey: true,
+                allowEnterKey: true,
+            })
+        }
+    })
+}
+
+function more_date (continent_filter,e){
+    for(let i = 0; i < continent_filter.length; i++){
+        if(e.target.id == continent_filter[i].id_lugar){
+            more_name.innerHTML = continent_filter[i].nombre;
+            more_description.innerHTML = continent_filter[i].description;
+            more_image.setAttribute('src',continent_filter[i].img);
+            image_continent.setAttribute('src',continent_filter[i].img_continent);
+            nombre_lugar.setAttribute('placeholder',continent_filter[i].nombre);
+            continente_lugar.setAttribute('placeholder',continent_filter[i].nombre_continente);
+        }
+    }
+}

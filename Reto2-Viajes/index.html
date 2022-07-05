@@ -98,15 +98,15 @@
             </div>
             <div class="col h-100 d-flex " id="col_right">
                 <div>
-                    <form action="">
+                    <form id="citation">
                     <h1 class="text-center">Agenda tu cita aquí</h1><br>
                     <input type="text" name="" id="nombre_lugar" placeholder="Nombre del lugar" size="57" readonly><br><br>
                     <input type="text" name="" id="continente_lugar" placeholder="Continente" size="57" readonly >
                     <br><br>
                     <b> Fecha de partida</b><br>
-                    <input type="date" name="" id="fecha_partida" required><br><br>
+                    <input type="date" name="fecha_partida" id="fecha_partida"  ><br><br>
                     <label for=""><b>Fecha de retorno</b></label><br>
-                    <input type="date" name="" id="fecha_retorno" required><br><br>
+                    <input type="date" name="fecha_retorno" id="fecha_retorno" ><br><br>
                     <textarea name="" id="comentarios" cols="60" rows="4" placeholder="Comentarios"></textarea> <br> <br>
                     <center><input type="submit" class="btn btn-outline-primary" id="submit" value="Enviar"></center>
                     </form>
@@ -121,5 +121,6 @@
         crossorigin="anonymous">
     </script>
     <script type="module" src="./javascript/script.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
 </body>
 </html>
