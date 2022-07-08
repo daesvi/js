@@ -288,7 +288,7 @@ function alerts_citation (){
         citation_name_continent = continente_lugar.getAttribute('placeholder');
         citation_name_place = nombre_lugar.getAttribute('placeholder');
         citation_img_place = more_image.getAttribute('src');
-        if(fecha_partida === '' || fecha_retorno === ''){
+        if(fecha_partida === '' || fecha_retorno === '' || fecha_partida >= fecha_retorno){
             Swal.fire({
                 icon: 'error',
                 title: '¡Ups!',
